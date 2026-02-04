@@ -1,7 +1,9 @@
-const UserCard = () => {
+const UserCard = ({ name, email, role }) => {
   return (
     <>
-      <p>Hello World</p>
+      <p>
+        My name is :{name} and my email is {email}
+      </p>
     </>
   );
 };

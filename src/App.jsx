@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <UserCard />
+      <UserCard name="Tycoon" email="kabuzitycoon@gmail.com" role="user" />
     </>
   );
 }
