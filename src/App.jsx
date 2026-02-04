@@ -5,9 +5,19 @@ import "./App.css";
 import UserCard from "./components/UserCard";
 
 function App() {
+  const [role, setRole] = useState("standard");
+
+  const changeRole = () => {
+    setRole("Admin");
+  };
   return (
     <>
-      <UserCard name="Tycoon" email="kabuzitycoon@gmail.com" role="standard" />
+      <UserCard
+        name="Tycoon"
+        email="kabuzitycoon@gmail.com"
+        role={role}
+        changeRole={changeRole}
+      />
     </>
   );
 }
