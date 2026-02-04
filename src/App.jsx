@@ -5,11 +5,9 @@ import "./App.css";
 import UserCard from "./components/UserCard";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <UserCard name="Tycoon" email="kabuzitycoon@gmail.com" role="user" />
+      <UserCard name="Tycoon" email="kabuzitycoon@gmail.com" role="standard" />
     </>
   );
 }

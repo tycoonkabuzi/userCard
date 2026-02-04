@@ -1,0 +1,11 @@
+.background {
+  background-color: rgb(243, 231, 231);
+  padding: 40px;
+  text-align: left;
+  color: rgb(44, 43, 43);
+  border-radius: 20px;
+}
+.button {
+  color: white;
+  margin-top: 20px;
+}
