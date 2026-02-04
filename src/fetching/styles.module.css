@@ -1,0 +1,8 @@
+.white {
+  background-color: white;
+  color: rgb(68, 67, 67);
+}
+.black {
+  background-color: rgb(78, 78, 78);
+  color: white;
+}
