@@ -26,7 +26,7 @@ function App() {
             />
           }
         />
-        <Route path="/about" element={<Users />} />
+        <Route path="/users" element={<Users />} />
       </Routes>
     </>
   );
