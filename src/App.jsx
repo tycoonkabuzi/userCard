@@ -6,6 +6,7 @@ import UserCard from "./components/UserCard";
 import { Route, Routes } from "react-router-dom";
 import Users from "./fetching/Users";
 import { ThemeProvider } from "./fetching/ThemeContext";
+import Login from "./login/Login";
 
 function App() {
   const [role, setRole] = useState("standard");
@@ -29,6 +30,7 @@ function App() {
             }
           />
           <Route path="/users" element={<Users />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </ThemeProvider>
     </>
