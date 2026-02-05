@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import UserCard from "./components/UserCard";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Users from "./fetching/Users";
 import { ThemeProvider } from "./fetching/ThemeContext";
 

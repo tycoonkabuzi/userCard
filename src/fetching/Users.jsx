@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { ThemeContext } from "./ThemeContext";
+
 const Users = () => {
   //   Display their names and emails in a list
   //   Include a loading indicator while fetching
@@ -12,8 +13,8 @@ const Users = () => {
   // Create a toggle button to switch themes
 
   // Access the theme in two different components
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
-  const { theme, toggle } = useContext(ThemeContext);
   const link = "https://jsonplaceholder.typicode.com/users";
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -34,7 +35,7 @@ const Users = () => {
   }, []);
   return (
     <div className={theme ? styles.white : styles.black}>
-      <button onClick={toggle}>Change</button>
+      <button onClick={toggleTheme}>Change</button>
       <h1>Users</h1>
       {loading === true ? (
         <p>Loading...</p>
