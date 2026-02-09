@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import Users from "./fetching/Users";
 import { ThemeProvider } from "./fetching/ThemeContext";
 import Login from "./login/Login";
+import Todo from "./todoApp/Todo";
 
 function App() {
   const [role, setRole] = useState("standard");
@@ -31,6 +32,7 @@ function App() {
           />
           <Route path="/users" element={<Users />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/todo" element={<Todo />} />
         </Routes>
       </ThemeProvider>
     </>
