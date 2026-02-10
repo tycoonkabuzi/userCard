@@ -50,27 +50,31 @@ const Todo = () => {
         {" "}
         validate{" "}
       </button>
-      {state.map((todo) => (
-        <p className={todo.completed ? style.lineThrough : ""} key={todo.id}>
-          {todo.text}{" "}
-          <button
-            className={style.button}
-            onClick={() =>
-              dispatch({ type: ACTIONS.TOGGLE_TODO, payload: todo.id })
-            }
-          >
-            Erase
-          </button>{" "}
-          <button
-            className={style.button}
-            onClick={() =>
-              dispatch({ type: ACTIONS.DELETE_TODO, payload: todo.id })
-            }
-          >
-            Delete
-          </button>
-        </p>
-      ))}
+      {state ? (
+        state.map((todo) => (
+          <p className={todo.completed ? style.lineThrough : ""} key={todo.id}>
+            {todo.text}{" "}
+            <button
+              className={style.button}
+              onClick={() =>
+                dispatch({ type: ACTIONS.TOGGLE_TODO, payload: todo.id })
+              }
+            >
+              Erase
+            </button>{" "}
+            <button
+              className={style.button}
+              onClick={() =>
+                dispatch({ type: ACTIONS.DELETE_TODO, payload: todo.id })
+              }
+            >
+              Delete
+            </button>
+          </p>
+        ))
+      ) : (
+        <p> List is empty</p>
+      )}
     </div>
   );
 };
