@@ -1,14 +1,20 @@
 import { useReducer, useState } from "react";
 import style from "./todo.module.css";
 const Todo = () => {
+  const ACTIONS = {
+    ADD_TODO: "add-todo",
+    DELETE_TODO: "delete-todo",
+  };
   const [text, setText] = useState("");
   const reducer = (state, action) => {
     switch (action.type) {
-      case "add":
+      case ACTIONS.ADD_TODO:
         return [
           ...state,
-          { id: Date.now, text: action.payload, completed: false },
+          { id: Date.now(), text: action.payload, completed: false },
         ];
+      case ACTIONS.DELETE_TODO:
+        return state.filter((state) => state.id !== action.payload);
 
       default:
         return state;
@@ -18,7 +24,8 @@ const Todo = () => {
     setText(e.target.value);
   };
   const handleSubmit = (e) => {
-    return dispatch({ type: "add", payload: text });
+    e.preventDefault();
+    return dispatch({ type: ACTIONS.ADD_TODO, payload: text });
   };
 
   const initialState = [];
@@ -39,7 +46,14 @@ const Todo = () => {
       {state.map((todo) => (
         <p key={todo.id}>
           {todo.text} <button className={style.button}>Erase</button>{" "}
-          <button className={style.button}>Delete</button>
+          <button
+            className={style.button}
+            onClick={() =>
+              dispatch({ type: ACTIONS.DELETE_TODO, payload: todo.id })
+            }
+          >
+            Delete
+          </button>
         </p>
       ))}
     </div>
