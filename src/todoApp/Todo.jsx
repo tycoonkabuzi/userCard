@@ -4,6 +4,7 @@ const Todo = () => {
   const ACTIONS = {
     ADD_TODO: "add-todo",
     DELETE_TODO: "delete-todo",
+    TOGGLE_TODO: "toggle-todo",
   };
   const [text, setText] = useState("");
   const reducer = (state, action) => {
@@ -15,6 +16,12 @@ const Todo = () => {
         ];
       case ACTIONS.DELETE_TODO:
         return state.filter((state) => state.id !== action.payload);
+      case ACTIONS.TOGGLE_TODO:
+        return state.map((state) =>
+          state.id === action.payload
+            ? { ...state, completed: !state.completed }
+            : state.completed
+        );
 
       default:
         return state;
@@ -44,8 +51,16 @@ const Todo = () => {
         validate{" "}
       </button>
       {state.map((todo) => (
-        <p key={todo.id}>
-          {todo.text} <button className={style.button}>Erase</button>{" "}
+        <p className={todo.completed ? style.lineThrough : ""} key={todo.id}>
+          {todo.text}{" "}
+          <button
+            className={style.button}
+            onClick={() =>
+              dispatch({ type: ACTIONS.TOGGLE_TODO, payload: todo.id })
+            }
+          >
+            Erase
+          </button>{" "}
           <button
             className={style.button}
             onClick={() =>
