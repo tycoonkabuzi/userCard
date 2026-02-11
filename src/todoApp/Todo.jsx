@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import style from "./todo.module.css";
 const Todo = () => {
   const ACTIONS = {
@@ -6,6 +6,7 @@ const Todo = () => {
     DELETE_TODO: "delete-todo",
     TOGGLE_TODO: "toggle-todo",
   };
+
   const [text, setText] = useState("");
   const reducer = (state, action) => {
     switch (action.type) {
@@ -20,13 +21,14 @@ const Todo = () => {
         return state.map((state) =>
           state.id === action.payload
             ? { ...state, completed: !state.completed }
-            : state.completed
+            : state
         );
 
       default:
         return state;
     }
   };
+
   const handleChange = (e) => {
     setText(e.target.value);
   };
@@ -38,6 +40,14 @@ const Todo = () => {
   const initialState = [];
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const allCompleted =
+    state.length > 0 && state.every((element) => element.completed === true);
+
+  useEffect(() => {
+    if (allCompleted) {
+      alert("All tasks completed");
+    }
+  }, [allCompleted]);
   return (
     <div>
       <h1>Todo App</h1>
@@ -50,7 +60,7 @@ const Todo = () => {
         {" "}
         validate{" "}
       </button>
-      {state ? (
+      {state !== "" ? (
         state.map((todo) => (
           <p className={todo.completed ? style.lineThrough : ""} key={todo.id}>
             {todo.text}{" "}
